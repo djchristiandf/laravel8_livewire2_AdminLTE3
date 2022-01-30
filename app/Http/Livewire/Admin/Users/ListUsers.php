@@ -2,12 +2,14 @@
 
 namespace App\Http\Livewire\Admin\Users;
 
+use App\Http\Livewire\Admin\AdminComponent;
 use App\Models\User;
 use Illuminate\Support\Facades\Validator;
-use Livewire\Component;
 
-class ListUsers extends Component
+
+class ListUsers extends AdminComponent
 {
+
     // usando individualmente wire:model.defer="name"
     //public $name;
     // public $email;
@@ -98,7 +100,7 @@ class ListUsers extends Component
 
     public function render()
     {
-        $users = User::latest()->paginate();
+        $users = User::latest()->paginate(5);
         return view('livewire.admin.users.list-users', [
             'users' => $users,
         ]);

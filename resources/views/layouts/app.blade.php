@@ -19,6 +19,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 
   <link rel="stylesheet" href="{{ asset('backend/plugins/toastr/toastr.min.css')}}" type="text/css">
+
+  <link rel="stylesheet" href="{{ asset('backend/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css')}}" type="text/css">
 @livewireStyles
 </head>
 <body class="hold-transition sidebar-mini">
@@ -64,6 +66,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 <script src="{{ asset('backend/plugins/toastr/toastr.min.js') }}"></script>
 
+<script type="text/javascript" src="https://momentjs.com/downloads/moment-with-locales.min.js"></script>
+
+<script src="{{ asset('backend/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js') }}"></script>
+
 <script>
     $(document).ready(function() {
         toastr.options = {
@@ -91,6 +97,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
         toastr.success(event.detail.message, 'Success!');
     })
 
+</script>
+
+<script>
+    $(document).ready(function() {
+        $('#appointmentDate').datetimepicker({
+            format: 'L',
+        });
+    })
 </script>
 @livewireScripts
 </body>
