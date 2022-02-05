@@ -51,11 +51,19 @@
                         </tr>
                     </thead>
                     <tbody>
-
+                        @foreach ($appointments as $appointment)
                           <tr>
-                            <th scope="row"></th>
-                            <td></td>
-                            <td></td>
+                            <th scope="row">{{ $loop->iteration}}</th>
+                            <td>{{ $appointment->client->name}}</td>
+                            <td>{{ $appointment->date->toFormattedDate()}}</td>
+                            <td>{{ $appointment->time->format('h:i A')}}</td>
+                            <td>
+                                @if ($appointment->status == 'SCHEDULED')
+                                    <span class="badge badge-primary">SCHEDULED</span>
+                                @else
+                                    <span class="badge badge-success">CLOSED</span>
+                                @endif
+                            </td>
                             <td>
                                 <a href="" >
                                     <i class="fa fa-edit mr-2"></i>
@@ -65,7 +73,7 @@
                                 </a>
                             </td>
                            </tr>
-
+                        @endforeach
                     </tbody>
                     </table>
               </div>
