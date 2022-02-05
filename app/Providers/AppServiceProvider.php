@@ -26,7 +26,11 @@ class AppServiceProvider extends ServiceProvider
     {
         //formatDate
         Carbon::macro('toFormattedDate', function () {
-            return $this->format('m/d/Y');
+            return $this->format('Y-m-d');
+        });
+
+        Carbon::macro('toFormattedTime', function () {
+            return $this->format('H:i A');
         });
     }
 }

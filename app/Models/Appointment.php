@@ -20,4 +20,13 @@ class Appointment extends Model
     {
         return $this->belongsTo(Client::class);
     }
+
+    public function getStatusBadgeAttribute()
+    {
+        $badges = [
+            'SCHEDULED' => 'primary',
+            'CLOSED' => 'success',
+        ];
+        return $badges[$this->status];
+    }
 }
