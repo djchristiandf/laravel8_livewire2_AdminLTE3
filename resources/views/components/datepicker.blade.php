@@ -8,10 +8,8 @@
 
 @push('js')
 <script type="text/javascript">
-    $(function () {
-        $('#{{ $id }}').datetimepicker({
-            format:'L'
-        });
+    $('#{{ $id }}').datetimepicker({
+        format:'L'
     });
 </script>
 @endpush

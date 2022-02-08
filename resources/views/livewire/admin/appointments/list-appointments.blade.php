@@ -55,8 +55,8 @@
                           <tr>
                             <th scope="row">{{ $loop->iteration}}</th>
                             <td>{{ $appointment->client->name}}</td>
-                            <td>{{ $appointment->date->toFormattedDate()}}</td>
-                            <td>{{ $appointment->time->toFormattedTime()}}</td>
+                            <td>{{ $appointment->date}}</td>
+                            <td>{{ $appointment->time}}</td>
                             <td>
                                 <span class="badge badge-{{$appointment->status_badge   }}">{{ $appointment->status}}</span>
                             </td>
@@ -68,10 +68,10 @@
                                 @endif
                             </td> --}}
                             <td>
-                                <a href="" >
+                                <a href="{{route('admin.appointments.edit', $appointment)}}">
                                     <i class="fa fa-edit mr-2"></i>
                                 </a>
-                                <a href="" >
+                                <a href="" wire:click.prevent='confirmAppointmentRemoval({{ $appointment->id}})'>
                                     <i class="fa fa-trash text-danger"></i>
                                 </a>
                             </td>
@@ -90,26 +90,5 @@
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content -->{{-- Care about people's approval and you will be their prisoner. --}}
-
-
-
-    <!-- Modal -->
-    <div class="modal fade" id="confirmationModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" wire:ignore.self>
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5>Delete User</h5>
-                </div>
-
-                <div class="modal-body">
-                    <h4>Are you sure you want to delete this appointment ?</h4>
-                </div>
-
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-times mr-1"></i> Cancel</button>
-                    <button type="button" class="btn btn-danger"><i class="fa fa-trash mr-1"></i>Delete User</button>
-                </div>
-            </div>
-        </div>
-    </div>
+    <x-confirmation-alert />
 </div>
